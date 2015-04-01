@@ -127,7 +127,7 @@ public class GrassState extends GameState {
 		JukeBox.load("/SFX/enemyhit.mp3", "enemyhit");
 		
 		// music
-		JukeBox.load("/Music/level1.mp3", "level1");
+		JukeBox.load("/Music/level1", "level1");
 		JukeBox.loop("level1", 600, JukeBox.getFrames("level1") - 2200);
 		
 	}

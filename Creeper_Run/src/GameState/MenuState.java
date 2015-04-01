@@ -57,8 +57,8 @@ public class MenuState extends GameState {
 			font3 = new Font("Arial", Font.PLAIN, 12);
 			
 			// load sound fx
-			JukeBox.load("/SFX/menuoption.mp3", "menuoption");
-			JukeBox.load("/SFX/menuselect.mp3", "menuselect");
+			JukeBox.load("/SFX/sample1.mp2", "menuoption");
+			JukeBox.load("/SFX/sample1.mp2", "menuselect");
 
 		}
 		catch(Exception e) {
