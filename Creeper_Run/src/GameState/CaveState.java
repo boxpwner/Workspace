@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
-import Audio.JukeBox;
+//import Audio.JukeBox;
 import Entity.Enemy;
 import Entity.EnemyProjectile;
 import Entity.EnergyParticle;
@@ -114,6 +114,7 @@ public class CaveState extends GameState {
 		eventStart();
 		
 		// sfx
+		/*
 		JukeBox.load("/SFX/teleport.mp3", "teleport");
 		JukeBox.load("/SFX/explode.mp3", "explode");
 		JukeBox.load("/SFX/enemyhit.mp3", "enemyhit");
@@ -121,7 +122,7 @@ public class CaveState extends GameState {
 		//Sound track
 		JukeBox.load("/Music/level3.mp3", "level3");
 		JukeBox.loop("level3", 600, JukeBox.getFrames("level3")-2200); 
-		
+		*/
 	}
 	
 	private void populateEnemies() {
@@ -306,7 +307,7 @@ public class CaveState extends GameState {
 	public void handleInput() {
 		if(Keys.isPressed(Keys.ESCAPE)) gsm.setPaused(true);
 		if(blockInput || player.getHealth() == 0) return;
-		if(Keys.isPressed(Keys.MUTE)) JukeBox.stop("level3");
+		//if(Keys.isPressed(Keys.MUTE)) JukeBox.stop("level3");
 		player.setUp(Keys.keyState[Keys.UP]);
 		player.setLeft(Keys.keyState[Keys.LEFT]);
 		player.setDown(Keys.keyState[Keys.DOWN]);
@@ -381,7 +382,7 @@ public class CaveState extends GameState {
 		if(eventCount >= 120) {
 			if(player.getLives() == 0) {
 				gsm.setState(GameStateManager.MENUSTATE);
-				JukeBox.stop("level3");
+				//JukeBox.stop("level3");
 			}
 			else {
 				eventDead = blockInput = false;
@@ -415,8 +416,8 @@ public class CaveState extends GameState {
 	private void eventFinish() {
 		eventCount++;
 		if(eventCount == 1) {
-			JukeBox.play("teleport");
-			JukeBox.stop("level3");
+			/*JukeBox.play("teleport");
+			JukeBox.stop("level3");*/
 			player.setTeleporting(true);
 			player.stop();
 		}
@@ -424,22 +425,22 @@ public class CaveState extends GameState {
 			tb.clear();
 			tb.add(new Rectangle(
 				GamePanel.WIDTH / 2, GamePanel.HEIGHT / 2, 0, 0));
-			JukeBox.stop("level3");
+			//JukeBox.stop("level3");
 		}
 		else if(eventCount > 120) {
 			tb.get(0).x -= 6;
 			tb.get(0).y -= 4;
 			tb.get(0).width += 12;
 			tb.get(0).height += 8;
-			JukeBox.stop("teleport");
-			JukeBox.stop("level3");
+			/*JukeBox.stop("teleport");
+			JukeBox.stop("level3");*/
 		}
 		if(eventCount == 180) {
 			PlayerSave.setHealth(player.getHealth());
 			PlayerSave.setLives(player.getLives());
 			PlayerSave.setTime(player.getTime());
 			gsm.setState(GameStateManager.FORESTSTATE);
-			JukeBox.stop("level3");
+			//JukeBox.stop("level3");
 		}
 		
 	}

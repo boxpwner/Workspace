@@ -31,7 +31,7 @@ public class GameStateManager {
 	
 	public GameStateManager() {
 		
-		JukeBox.init();
+		//JukeBox.init();
 		
 		gameStates = new GameState[NUMGAMESTATES];
 		
