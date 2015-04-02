@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 
-import Audio.JukeBox;
+//import Audio.JukeBox;
 import Entity.PlayerSave;
 import Handlers.Keys;
 import Main.GamePanel;
@@ -114,6 +114,7 @@ public class PauseState extends GameState {
 		if(Keys.isPressed(Keys.ENTER)) {
 			gsm.setPaused(false);
 			gsm.setState(GameStateManager.MENUSTATE);
+			/*
 			JukeBox.stop("level1");
 			JukeBox.stop("level2");
 			JukeBox.stop("level3");
@@ -126,6 +127,7 @@ public class PauseState extends GameState {
 			JukeBox.stop("level10");
 			JukeBox.stop("fanfare");
 			JukeBox.stop("credits");
+			*/
 		}
 	}
 }

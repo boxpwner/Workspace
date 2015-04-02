@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
-import Audio.JukeBox;
+//import Audio.JukeBox;
 import Entity.Enemy;
 import Entity.EnemyProjectile;
 import Entity.EnergyParticle;
@@ -121,6 +121,7 @@ public class GrassState extends GameState {
 		tb = new ArrayList<Rectangle>();
 		eventStart();
 		
+		/*
 		// sfx
 		JukeBox.load("/SFX/teleport.mp3", "teleport");
 		JukeBox.load("/SFX/explode.mp3", "explode");
@@ -129,7 +130,7 @@ public class GrassState extends GameState {
 		// music
 		JukeBox.load("/Music/level1", "level1");
 		JukeBox.loop("level1", 600, JukeBox.getFrames("level1") - 2200);
-		
+		*/
 	}
 	
 	private void populateEnemies() {
@@ -267,7 +268,7 @@ public class GrassState extends GameState {
 	
 	public void handleInput() {
 		if(Keys.isPressed(Keys.ESCAPE)) gsm.setPaused(true);
-		if(Keys.isPressed(Keys.MUTE)) JukeBox.stop("level1");
+		if(Keys.isPressed(Keys.MUTE)) //JukeBox.stop("level1");
 		if(blockInput || player.getHealth() == 0) return;
 		player.setUp(Keys.keyState[Keys.UP]);
 		player.setLeft(Keys.keyState[Keys.LEFT]);
@@ -345,7 +346,7 @@ public class GrassState extends GameState {
 		if(eventCount >= 120) {
 			if(player.getLives() == 0) {
 				gsm.setState(GameStateManager.MENUSTATE);
-				JukeBox.stop("level1");
+				//JukeBox.stop("level1");
 			}
 			else {
 				eventDead = blockInput = false;
@@ -360,8 +361,8 @@ public class GrassState extends GameState {
 	private void eventFinish() {
 		eventCount++;
 		if(eventCount == 1) {
-			JukeBox.play("teleport");
-			JukeBox.stop("level1");
+			/*JukeBox.play("teleport");
+			JukeBox.stop("level1");*/
 			player.setTeleporting(true);
 			player.stop();
 		}
@@ -369,22 +370,22 @@ public class GrassState extends GameState {
 			tb.clear();
 			tb.add(new Rectangle(
 				GamePanel.WIDTH / 2, GamePanel.HEIGHT / 2, 0, 0));
-			JukeBox.stop("level1");
+			//JukeBox.stop("level1");
 		}
 		else if(eventCount > 120) {
 			tb.get(0).x -= 6;
 			tb.get(0).y -= 4;
 			tb.get(0).width += 12;
 			tb.get(0).height += 8;
-			JukeBox.stop("teleport");
-			JukeBox.stop("level1");
+			//JukeBox.stop("teleport");
+			//JukeBox.stop("level1");
 		}
 		if(eventCount == 180) {
 			PlayerSave.setHealth(player.getHealth());
 			PlayerSave.setLives(player.getLives());
 			PlayerSave.setTime(player.getTime());
 			gsm.setState(GameStateManager.NETHERSTATE);
-			JukeBox.stop("level1");
+			//JukeBox.stop("level1");
 		}
 		
 	}

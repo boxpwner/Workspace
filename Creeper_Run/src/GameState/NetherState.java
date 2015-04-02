@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
-import Audio.JukeBox;
+//import Audio.JukeBox;
 import Entity.Enemy;
 import Entity.EnemyProjectile;
 import Entity.EnergyParticle;
@@ -17,9 +17,9 @@ import Entity.Player;
 import Entity.PlayerSave;
 import Entity.Teleport;
 import Entity.Title;
-import Entity.Enemies.Gazer;
+//import Entity.Enemy.Gazer;
 import Entity.Enemies.GelPop;
-import Entity.Enemies.Tengu;
+//import Entity.Enemy.Tengu;
 import Handlers.Keys;
 import Main.GamePanel;
 import TileMap.Background;
@@ -115,6 +115,7 @@ public class NetherState extends GameState {
 		eventStart();
 		
 		// sfx
+		/*
 		JukeBox.load("/SFX/teleport.mp3", "teleport");
 		JukeBox.load("/SFX/explode.mp3", "explode");
 		JukeBox.load("/SFX/enemyhit.mp3", "enemyhit");
@@ -122,7 +123,7 @@ public class NetherState extends GameState {
 		//Sound track
 		JukeBox.load("/Music/level2.mp3", "level2");
 		JukeBox.loop("level2", 600, JukeBox.getFrames("level2")-2200); 
-		
+		*/
 	}
 	
 	private void populateEnemies() {
@@ -316,7 +317,7 @@ public class NetherState extends GameState {
 	public void handleInput() {
 		if(Keys.isPressed(Keys.ESCAPE)) gsm.setPaused(true);
 		if(blockInput || player.getHealth() == 0) return;
-		if(Keys.isPressed(Keys.MUTE)) JukeBox.stop("level2");
+		//if(Keys.isPressed(Keys.MUTE)) JukeBox.stop("level2");
 		player.setUp(Keys.keyState[Keys.UP]);
 		player.setLeft(Keys.keyState[Keys.LEFT]);
 		player.setDown(Keys.keyState[Keys.DOWN]);
@@ -424,8 +425,8 @@ public class NetherState extends GameState {
 	private void eventFinish() {
 		eventCount++;
 		if(eventCount == 1) {
-			JukeBox.play("teleport");
-			JukeBox.stop("level2");
+			/*JukeBox.play("teleport");
+			JukeBox.stop("level2");*/
 			player.setTeleporting(true);
 			player.stop();
 		}
@@ -439,15 +440,15 @@ public class NetherState extends GameState {
 			tb.get(0).y -= 4;
 			tb.get(0).width += 12;
 			tb.get(0).height += 8;
-			JukeBox.stop("teleport");
-			JukeBox.stop("level2");
+			/*JukeBox.stop("teleport");
+			JukeBox.stop("level2");*/
 		}
 		if(eventCount == 180) {
 			PlayerSave.setHealth(player.getHealth());
 			PlayerSave.setLives(player.getLives());
 			PlayerSave.setTime(player.getTime());
 			gsm.setState(GameStateManager.CAVESTATE);
-			JukeBox.stop("level2");
+			//JukeBox.stop("level2");
 		}
 		
 	}

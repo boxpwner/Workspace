@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 
-import Audio.JukeBox;
+//import Audio.JukeBox;
 import Handlers.Keys;
 import Main.GamePanel;
 
@@ -23,8 +23,8 @@ public class AcidState extends GameState {
 	public AcidState(GameStateManager gsm) {
 		super(gsm);
 		//music
-		JukeBox.load("/Music/fanfare.mp3", "fanfare");
-		JukeBox.loop("fanfare", 600, JukeBox.getFrames("fanfare") - 2200);
+		//JukeBox.load("/Music/fanfare.mp3", "fanfare");
+		//JukeBox.loop("fanfare", 600, JukeBox.getFrames("fanfare") - 2200);
 		
 		try {
 			player = ImageIO.read(
@@ -63,8 +63,8 @@ public class AcidState extends GameState {
 	
 	public void handleInput() {
 		if(Keys.isPressed(Keys.ESCAPE)){ gsm.setState(GameStateManager.MENUSTATE);
-		JukeBox.stop("fanfare");
-		if(Keys.isPressed(Keys.MUTE)) JukeBox.stop("fanfare");
+		//JukeBox.stop("fanfare");
+		//if(Keys.isPressed(Keys.MUTE)) JukeBox.stop("fanfare");
 	}
 	}
 
