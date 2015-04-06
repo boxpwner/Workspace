@@ -176,6 +176,7 @@ public class Player2 extends MapObject {
 	}
 	public void setTeleporting(boolean b) { teleporting = b; }
 	
+	/*
 	public void setJumping(boolean b) {
 		if(knockback) return;
 		if(b && !jumping && falling && !alreadyDoubleJump) {
@@ -183,6 +184,7 @@ public class Player2 extends MapObject {
 		}
 		jumping = b;
 	}
+	*/
 	public void setAttacking() {
 		if(knockback) return;
 		if(charging) return;
@@ -253,7 +255,7 @@ public class Player2 extends MapObject {
 	}
 	
 	public void stop() {
-		left = right = up = down = flinching = 
+		west = east = up = down = flinching = north = south =
 			dashing = jumping = attacking = upattacking = charging = false;
 	}
 	
@@ -269,13 +271,13 @@ public class Player2 extends MapObject {
 		if(dashing) maxSpeed *= 1.75;
 		
 		// movement
-		if(left) {
+		if(west) {
 			dx -= moveSpeed;
 			if(dx < -maxSpeed) {
 				dx = -maxSpeed;
 			}
 		}
-		else if(right) {
+		else if(east) {
 			dx += moveSpeed;
 			if(dx > maxSpeed) {
 				dx = maxSpeed;
@@ -295,13 +297,13 @@ public class Player2 extends MapObject {
 				}
 			}
 			
-			if(down) {
+			if(south) {
 				dy -= moveSpeed;
 				if(dy < -maxSpeed) {
 					dy = -maxSpeed;
 				}
 			}
-			else if(up) {
+			else if(north) {
 				dy += moveSpeed;
 				if(dy > maxSpeed) {
 					dy = maxSpeed;
@@ -577,12 +579,12 @@ public class Player2 extends MapObject {
 				setAnimation(FALLING);
 			}
 		}
-		else if(dashing && (left || right)) {
+		else if(dashing && (west || east)) {
 			if(currentAction != DASHING) {
 				setAnimation(DASHING);
 			}
 		}
-		else if(left || right) {
+		else if(west || east) {
 			if(currentAction != WALKING) {
 				setAnimation(WALKING);
 			}
@@ -595,8 +597,8 @@ public class Player2 extends MapObject {
 		
 		// set direction
 		if(!attacking && !upattacking && !charging && !knockback) {
-			if(right) facingRight = true;
-			if(left) facingRight = false;
+			if(east) facingRight = true;
+			if(west) facingRight = false;
 		}
 		
 	}

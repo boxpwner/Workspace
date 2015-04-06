@@ -321,10 +321,13 @@ public class NetherState extends GameState {
 		if(blockInput || player2.getHealth() == 0) return;
 		//if(Keys.isPressed(Keys.MUTE)) JukeBox.stop("level2");
 		player2.setUp(Keys.keyState[Keys.UP]);
-		player2.setLeft(Keys.keyState[Keys.LEFT]);
 		player2.setDown(Keys.keyState[Keys.DOWN]);
-		player2.setRight(Keys.keyState[Keys.RIGHT]);
-		player2.setJumping(Keys.keyState[Keys.BUTTON1]);
+		
+		player2.setWest(Keys.keyState[Keys.WEST]);
+		player2.setEast(Keys.keyState[Keys.EAST]);
+		player2.setNorth(Keys.keyState[Keys.NORTH]);
+		player2.setSouth(Keys.keyState[Keys.SOUTH]);
+
 		player2.setDashing(Keys.keyState[Keys.BUTTON2]);
 		if(Keys.isPressed(Keys.BUTTON3)) player2.setAttacking();
 		if(Keys.isPressed(Keys.BUTTON4)) player2.setCharging();

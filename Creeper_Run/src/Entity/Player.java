@@ -253,7 +253,7 @@ public class Player extends MapObject {
 	}
 	
 	public void stop() {
-		left = right = up = down = flinching = 
+		west = east = up = down = flinching = 
 			dashing = jumping = attacking = upattacking = charging = false;
 	}
 	
@@ -269,13 +269,13 @@ public class Player extends MapObject {
 		if(dashing) maxSpeed *= 1.75;
 		
 		// movement
-		if(left) {
+		if(west) {
 			dx -= moveSpeed;
 			if(dx < -maxSpeed) {
 				dx = -maxSpeed;
 			}
 		}
-		else if(right) {
+		else if(east) {
 			dx += moveSpeed;
 			if(dx > maxSpeed) {
 				dx = maxSpeed;
@@ -543,12 +543,12 @@ public class Player extends MapObject {
 				setAnimation(FALLING);
 			}
 		}
-		else if(dashing && (left || right)) {
+		else if(dashing && (west || east)) {
 			if(currentAction != DASHING) {
 				setAnimation(DASHING);
 			}
 		}
-		else if(left || right) {
+		else if(west || east) {
 			if(currentAction != WALKING) {
 				setAnimation(WALKING);
 			}
@@ -561,8 +561,8 @@ public class Player extends MapObject {
 		
 		// set direction
 		if(!attacking && !upattacking && !charging && !knockback) {
-			if(right) facingRight = true;
-			if(left) facingRight = false;
+			if(east) facingRight = true;
+			if(west) facingRight = false;
 		}
 		
 	}
